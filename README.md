@@ -36,6 +36,17 @@
 
 <br>
 
+## Cryptography
+
+_Kerckhoffs’s principle_ is a foundational rule in cryptography
+
+`A cryptosystem should remain secure even if everything about the system,
+except the secret key, is public knowledge.`
+
+---
+
+<br>
+
 ## ChatGPT on Mediator, Interpreter and Translator
 
 ### Mediator 🕹
