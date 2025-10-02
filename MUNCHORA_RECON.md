@@ -21,6 +21,33 @@ Example:
 amass enum -d munchora.pro
 ```
 
+---
+
+<br>
+
+### Gobuster directory and endpoint brute forcing
+
+**Network Binding for Local Development**
+
+_To make it work where Rails server is running locally with mac but accessible for VMWare Kali machine:_
+
+Web servers often default to 127.0.0.1 (localhost-only binding),
+blocking external access from VMs or other machines. 
+
+Use -b 0.0.0.0 to bind to all network interfaces, making the app accessible via machine's IP address.
+This allows security tools in VMs to scan locally hosted applications during development and testing.
+Fix by running rails server this way: `bin/rails server -b 0.0.0.0`
+
+```
+gobuster dir -u http://192.168.18.12:3000/api/v1 -w /usr/share/seclists/Discovery/Web-Content/common-api-endpoints-mazen160.txt
+```
+
+![Gobuster Brute Forcing Endpoints](assets/gobuster-endpoint-brute-force-api-v1.png)
+
+---
+
+<br>
+
 ### DNS recon
 
 _dig_, _nslookup_, host to check A/AAAA, MX, TXT, and CNAME records.
