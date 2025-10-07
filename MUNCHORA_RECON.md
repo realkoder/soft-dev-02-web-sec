@@ -1,5 +1,20 @@
 # Recon of Munchora
 
+**Preperations**
+
+For local testing of Munchora (don’t use production — it has strict rate limits),
+enter the `soft-dev-02-databases project`,
+then enter `soft-dev-02-databases` project and start it by running `make dev`,
+then find real machines local IP by `ipconfig getifaddr en0`
+and now use that local IP for recon and other stuff from _Kali machine_.
+
+```bash
+# Find local machine IP which is the victim IP
+ipconfig getifaddr en0
+```
+
+Happy xploit!
+
 ## Domain / OSINT reconnaissance
 
 ### Google search
@@ -32,7 +47,7 @@ amass enum -d munchora.pro
 _To make it work where Rails server is running locally with mac but accessible for VMWare Kali machine:_
 
 Web servers often default to 127.0.0.1 (localhost-only binding),
-blocking external access from VMs or other machines. 
+blocking external access from VMs or other machines.
 
 Use -b 0.0.0.0 to bind to all network interfaces, making the app accessible via machine's IP address.
 This allows security tools in VMs to scan locally hosted applications during development and testing.
