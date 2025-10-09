@@ -1,0 +1,15 @@
+# ===========================================================
+#       🐳 🐳 🐳 🐳 🐳 DOCKER COMPOSE DEV 🐳 🐳 🐳 🐳 🐳
+# ===========================================================
+# docker-compose up:    docker-compose -f docker-compose.juice-shop.yml up
+# docker-compose logs:  docker-compose -f docker-compose.juice-shop.yml logs -f
+# docker-compose down:  docker-compose -f docker-compose.juice-shop.yml down --rmi all --remove-orphans
+#                       // Deletes all images - JUST MAKE SURE VOLUMES WON'T BE DELETED
+
+services:
+  juice-shop:
+    image: bkimminich/juice-shop
+    container_name: juice-shop
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:3000:3000"

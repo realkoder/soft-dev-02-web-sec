@@ -49,6 +49,14 @@ except the secret key, is public knowledge.`
 
 <br>
 
+## SQL Injection
+
+For juiceshop if the following is inserted into username/email field login is approved: `' or '1'='1' --`
+
+---
+
+<br>
+
 ## ChatGPT on Mediator, Interpreter and Translator
 
 ### Mediator 🕹
