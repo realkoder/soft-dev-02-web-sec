@@ -4,7 +4,7 @@
 
 For local testing of Munchora (don’t use production — it has strict rate limits),
 enter the `soft-dev-02-databases project`,
-then enter `soft-dev-02-databases` project and start it by running `make dev`,
+then enter `soft-dev-02-databases` project and remember to start rails server with `-b 0.0.0.0` and then run `make dev`,
 then find real machines local IP by `ipconfig getifaddr en0`
 and now use that local IP for recon and other stuff from _Kali machine_.
 
@@ -284,3 +284,17 @@ Nmap done: 1 IP address (1 host up) scanned in 17.22 seconds
 5. Actionable takeaways: restrict/ACL SSH, disable or firewall SNMP, enable HTTPS (remove default nginx page), and keep
    firewall rules tuned (use `-Pn` when ICMP is blocked).
 
+
+---
+
+<br>
+
+## Whatweb finding third party dependencies
+
+whatweb will detect client side frameworks, JS libraries server side frameworks, databases, headers, errors and more.
+
+```bash
+whatweb -a 3 munchora.pro --log-json=munchora-technologies.json
+http://munchora.pro [200 OK] Country[NETHERLANDS][NL], HTML5, HTTPServer[nginx], IP[139.162.157.131], Title[Welcome to nginx!], nginx
+```
+                          
