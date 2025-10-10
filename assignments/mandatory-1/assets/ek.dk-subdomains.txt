@@ -1,0 +1,12 @@
+*.ek.dk
+cpanel.jas.ek.dk
+cphbusinessintra.ek.dk
+ek.dk
+ek.dk aps
+filemakerdev.ek.dk
+filemakerserver.ek.dk
+intra.ek.dk
+jas.ek.dk
+ldaps.ek.dk
+staging.ek.dk
+www.ek.dk
