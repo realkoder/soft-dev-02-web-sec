@@ -1,18 +1,3 @@
-# =============================================
-# WE COULD USE GOOGLE
-# subdomains for *.kea.dk
-# site:*kea.dk
-# site:*kea.dk "login"
-# site:*kea.dk filetype:env
-# =============================================
-
-# =============================================
-# subdomains for *.ek.dk
-# site:*ek.dk
-# site:*ek.dk "login"
-# site:*ek.dk filetype:env
-# =============================================
-
 require 'net/http'
 require 'json'
 require 'uri'

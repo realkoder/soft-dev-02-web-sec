@@ -62,4 +62,21 @@ otherwise your SSH client will ignore the file with a warning.
 Only the owner should be able to read or write to the private key (600 or stricter).
 `ssh -i keyNameGoesHere user@host` is how you specify a key for the standard _Linux OpenSSH client_.
 
+---
+
+<br>
+
+# Copying from machine to another by scp
+
+SCP (Secure Copy) - Simple method:
+
+Find vm ip by `ip addr show`
+
+```bash
+# Copy FROM VM TO your local machine
+scp username@vm_ip:/path/to/file/on/vm /path/on/your/local/machine
+
+# Example:
+scp user@192.168.1.100:/home/user/document.txt ~/Downloads/
+```
 

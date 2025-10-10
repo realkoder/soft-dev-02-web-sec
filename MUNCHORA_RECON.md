@@ -33,7 +33,29 @@ Tools: _sublist3r_, _amass_, _assetfinder_
 Example:
 
 ```bash
-amass enum -d munchora.pro
+amass enum -d munchora.pro                
+munchora.pro (FQDN) --> ns_record --> ns02.one.com (FQDN)
+munchora.pro (FQDN) --> ns_record --> ns01.one.com (FQDN)
+ns02.one.com (FQDN) --> a_record --> 185.10.11.10 (IPAddress)
+ns02.one.com (FQDN) --> aaaa_record --> 2001:67c:3c0::10 (IPAddress)
+185.10.11.0/24 (Netblock) --> contains --> 185.10.11.10 (IPAddress)
+2001:67c:3c0::/48 (Netblock) --> contains --> 2001:67c:3c0::10 (IPAddress)
+0 (ASN) --> managed_by --> Not routed (RIROrganization)
+0 (ASN) --> announces --> 185.10.11.0/24 (Netblock)
+197495 (ASN) --> managed_by --> LARSENDATA (RIROrganization)
+197495 (ASN) --> announces --> 2001:67c:3c0::/48 (Netblock)
+ns01.one.com (FQDN) --> a_record --> 195.206.121.10 (IPAddress)
+ns01.one.com (FQDN) --> aaaa_record --> 2001:67c:28cc::10 (IPAddress)
+www.munchora.pro (FQDN) --> a_record --> 139.162.157.131 (IPAddress)
+195.206.121.0/24 (Netblock) --> contains --> 195.206.121.10 (IPAddress)
+2001:67c:28cc::/48 (Netblock) --> contains --> 2001:67c:28cc::10 (IPAddress)
+139.162.0.0/16 (Netblock) --> contains --> 139.162.157.131 (IPAddress)
+51468 (ASN) --> managed_by --> ONECOM (RIROrganization)
+51468 (ASN) --> announces --> 195.206.121.0/24 (Netblock)
+51468 (ASN) --> announces --> 2001:67c:28cc::/48 (Netblock)
+63949 (ASN) --> managed_by --> LINODE-AP Linode, LLC (RIROrganization)
+63949 (ASN) --> announces --> 139.162.0.0/16 (Netblock)
+munchora.pro (FQDN) --> a_record --> 139.162.157.131 (IPAddress)
 ```
 
 ---
