@@ -316,7 +316,7 @@ scripts.forEach(script => {
 ```
 
 Running this towards react based munchora doesn't work well since it's bundled and minified — meaning
-there are no obvious <script src="react.js"> tags anymore. Everything is packed into one or more hashed .js files like
+there are no obvious `<script src="react.js">` tags anymore. Everything is packed into one or more hashed .js files like
 main.3d84a.js.
 
 ## Wappalyzer
