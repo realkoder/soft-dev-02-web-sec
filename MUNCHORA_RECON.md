@@ -121,6 +121,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.32 seconds
 ```
 
 ✅ **Key takeaways**
+
 - HTTPS is active on port 443.
 - The certificate is valid, trusted, and covers both `munchora.pro` and `www.munchora.pro`.
 - Uses strong modern crypto (ECDSA-256 + SHA384).
@@ -284,12 +285,13 @@ Nmap done: 1 IP address (1 host up) scanned in 17.22 seconds
 5. Actionable takeaways: restrict/ACL SSH, disable or firewall SNMP, enable HTTPS (remove default nginx page), and keep
    firewall rules tuned (use `-Pn` when ICMP is blocked).
 
-
 ---
 
 <br>
 
-## Whatweb finding third party dependencies
+# Third party dependencies
+
+## Whatweb
 
 whatweb will detect client side frameworks, JS libraries server side frameworks, databases, headers, errors and more.
 
@@ -297,4 +299,31 @@ whatweb will detect client side frameworks, JS libraries server side frameworks,
 whatweb -a 3 munchora.pro --log-json=munchora-technologies.json
 http://munchora.pro [200 OK] Country[NETHERLANDS][NL], HTML5, HTTPServer[nginx], IP[139.162.157.131], Title[Welcome to nginx!], nginx
 ```
-                          
+
+## Custom Script from main book
+
+The following script makes use of built-in DOM traversal func to quickly generate a list of each script tag imported
+into current page.
+
+```javascript
+const scripts = document.querySelectorAll('script');
+
+scripts.forEach(script => {
+  if (script.src) {
+    console.log(`i: ${script.src}`);
+  }
+});
+```
+
+Running this towards react based munchora doesn't work well since it's bundled and minified — meaning
+there are no obvious <script src="react.js"> tags anymore. Everything is packed into one or more hashed .js files like
+main.3d84a.js.
+
+## Wappalyzer
+
+This tool just works...
+
+![Wappalyzer just works - munchora scan](assets/munchora-wappalyzer-scan.png)
+
+
+

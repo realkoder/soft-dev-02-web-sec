@@ -57,6 +57,28 @@ For juiceshop if the following is inserted into username/email field login is ap
 
 <br>
 
+## Finding third party dependencies for a given web app
+
+The following script makes use of built-in DOM traversal func to quickly generate a list of each script tag imported
+into current page.
+
+Go to a website open developer tools in browser, go to console and execute the following code to get all third part
+dependencies logged:
+
+```javascript
+const scripts = document.querySelectorAll('script');
+
+scripts.forEach(script => {
+  if (script.src) {
+    console.log(`i: ${script.src}`);
+  }
+});
+```
+
+---
+
+<br>
+
 ## ChatGPT on Mediator, Interpreter and Translator
 
 ### Mediator 🕹
