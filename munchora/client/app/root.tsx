@@ -25,19 +25,28 @@ export const links: Route.LinksFunction = () => [
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-      </head>
-      <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </body>
+    <head>
+      <meta charSet="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      {/*<meta httpEquiv="Content-Security-Policy"*/}
+      {/*      content="default-src 'self';*/}
+      {/*         script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com;*/}
+      {/*         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com;*/}
+      {/*         font-src 'self' https://fonts.gstatic.com;*/}
+      {/*         img-src 'self' data: blob: https:;*/}
+      {/*         connect-src 'self';*/}
+      {/*         worker-src 'self' blob:;*/}
+      {/*         manifest-src 'self';"/>*/}
+      <Meta/>
+      <Links/>
+      <link rel="icon" href="/favicon.ico"/>
+      <link rel="shortcut icon" href="/favicon.ico"/>
+    </head>
+    <body>
+    {children}
+    <ScrollRestoration/>
+    <Scripts/>
+    </body>
     </html>
   );
 }
@@ -47,16 +56,16 @@ export default function App() {
     <main>
       <QueryClientProvider client={queryClient}>
         <Provider>
-          <Toaster />
-          <AuthBootstrapper />
-          <Outlet />
+          <Toaster/>
+          <AuthBootstrapper/>
+          <Outlet/>
         </Provider>
       </QueryClientProvider>
     </main>
   );
 }
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+export function ErrorBoundary({error}: Route.ErrorBoundaryProps) {
   let message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
