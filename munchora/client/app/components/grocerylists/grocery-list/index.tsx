@@ -80,7 +80,7 @@ export const GroceryList = ({ list, setListToShare, setShowShareModal }: Grocery
               </Button>
             </CardTitle>
             {list.shared_users?.length > 0 && (
-              <CardDescription>Shared with: {list.shared_users.map((user) => user.fullname.split(' ')[0]).join(', ')}</CardDescription>
+              <CardDescription>Shared with: {list.shared_users.map((user) => user.first_name.split(' ')[0]).join(', ')}</CardDescription>
             )}
           </div>
           <div className="flex items-center space-x-2">

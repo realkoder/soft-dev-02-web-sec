@@ -39,7 +39,8 @@ export interface IGroceryList {
   owner_id: string;
   shared_users: {
     id: string;
-    fullname: string;
+    first_name: string;
+    last_name: string;
     image_src: string;
   }[];
   created_at: Date;
