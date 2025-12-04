@@ -272,6 +272,78 @@ with.
 
 ## Misc
 
+### Dependency vulnerabilities
+
+Using 'bundle-audit' for Ruby on Rails app to check for any insecure gems.
+
+```bash
+bundle audit check --update
+
+Updating ruby-advisory-db ...
+From https://github.com/rubysec/ruby-advisory-db
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+Updated ruby-advisory-db
+ruby-advisory-db:
+  advisories:   1033 advisories
+  last updated: 2025-11-26 23:11:47 -0800
+  commit:       e7530e9589a610c9326fe873979510de7457e5c0
+Name: rack
+Version: 3.2.0
+CVE: CVE-2025-61770
+GHSA: GHSA-p543-xpfm-54cp
+Criticality: High
+URL: https://github.com/rack/rack/security/advisories/GHSA-p543-xpfm-54cp
+Title: Rack's unbounded multipart preamble buffering enables DoS (memory exhaustion)
+Solution: update to '~> 2.2.19', '~> 3.1.17', '>= 3.2.2'
+
+Name: rack
+Version: 3.2.0
+CVE: CVE-2025-61771
+GHSA: GHSA-w9pc-fmgc-vxvw
+Criticality: High
+URL: https://github.com/rack/rack/security/advisories/GHSA-w9pc-fmgc-vxvw
+Title: Multipart parser buffers large non‑file fields entirely in memory, enabling DoS (memory exhaustion)
+Solution: update to '~> 2.2.19', '~> 3.1.17', '>= 3.2.2'
+
+Name: rack
+Version: 3.2.0
+CVE: CVE-2025-61772
+GHSA: GHSA-wpv5-97wm-hp9c
+Criticality: High
+URL: https://github.com/rack/rack/security/advisories/GHSA-wpv5-97wm-hp9c
+Title: Rack's multipart parser buffers unbounded per-part headers, enabling DoS (memory exhaustion)
+Solution: update to '~> 2.2.19', '~> 3.1.17', '>= 3.2.2'
+
+Name: rack
+Version: 3.2.0
+CVE: CVE-2025-61780
+GHSA: GHSA-r657-rxjc-j557
+Criticality: Medium
+URL: https://github.com/rack/rack/security/advisories/GHSA-r657-rxjc-j557
+Title: Rack has a Possible Information Disclosure Vulnerability
+Solution: update to '~> 2.2.20', '~> 3.1.18', '>= 3.2.3'
+
+Name: rack
+Version: 3.2.0
+CVE: CVE-2025-61919
+GHSA: GHSA-6xw4-3v39-52mm
+Criticality: High
+URL: https://github.com/rack/rack/security/advisories/GHSA-6xw4-3v39-52mm
+Title: Rack is vulnerable to a memory-exhaustion DoS through unbounded URL-encoded body parsing
+Solution: update to '~> 2.2.20', '~> 3.1.18', '>= 3.2.3'
+
+Name: uri
+Version: 1.0.3
+CVE: CVE-2025-61594
+Criticality: Unknown
+URL: https://www.ruby-lang.org/en/news/2025/10/07/uri-cve-2025-61594
+Title: CVE-2025-61594 - URI Credential Leakage Bypass over CVE-2025-27221
+Solution: update to '~> 0.12.5', '~> 0.13.3', '>= 1.0.4'
+
+Vulnerabilities found!
+```
+
 **_Auth scheme_**
 
 ![Auth Scheme](assets/auth-scheme.png)
