@@ -119,3 +119,38 @@ location /uploads/ {
     expires 30d;
 }
 ```
+
+[This explains the use epoll](https://www.getpagespeed.com/server-setup/nginx/the-epoll-connection-processing-method-a-simple-way-to-enhance-nginx-performance?srsltid=AfmBOoorYXi4XhrnrDBaRt02YrbB_qst9f2NqLsD08rp8GxJujDc6Y20)
+
+---
+
+<br>
+
+## Fail2ban
+
+```
+sudo apt install fail2ban
+```
+
+Create `/etc/fail2ban/filter.d/nginx-rate-limit.conf`:
+```text
+[Definition]
+failregex = limiting requests, excess:.* by zone.*client: <HOST>
+ignoreregex =
+```
+
+And `/etc/fail2ban/jail.local`:
+
+```text
+[nginx-rate-limit]
+enabled = true
+filter = nginx-rate-limit
+logpath = /var/log/nginx/error.log
+maxretry = 5
+findtime = 60 # must occur within 60 seconds
+bantime = 120 # Ban lasts 120 seconds = 2 minutes
+```
+
+Then Reload Nginx: `sudo nginx -t && sudo systemctl reload nginx`
+
+And restart fail2ban: `sudo systemctl restart fail2ban`
