@@ -1,0 +1,86 @@
+name: Server - Continuous Integration
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - "munchora/server/app/**"
+      - "munchora/server/config/**"
+      - "munchora/server/db/**"
+  push:
+    branches: [ "main" ]
+    paths:
+      - "munchora/server/app/**"
+      - "munchora/server/config/**"
+      - "munchora/server/spec/**"
+      - "munchora/server/db/**"
+
+jobs:
+  # =======================================================================
+  # JOB 1: LINTING (Static Analysis)
+  # =======================================================================
+  linting:
+    continue-on-error: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # ------------------------------------------
+      # Setup Ruby & Install Gems (Only needed for linting)
+      # ------------------------------------------
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4.2
+          bundler-cache: true
+          working-directory: munchora/server
+
+      # ------------------------------------------
+      # LINTING W. RUBOCOP
+      # ------------------------------------------
+      - name: Run RuboCop and Generate JSON Report
+        working-directory: munchora/server
+        run: |
+          # Use the built-in JSON formatter
+          bundle exec rubocop \
+            --format json \
+            --out rubocop-report.json --fail-level error
+
+      # ------------------------------------------
+      # PUBLISH RUBOCOP ARTIFACT
+      # ------------------------------------------
+      - name: Upload RuboCop JSON Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rubocop-json-report
+          path: munchora/server/rubocop-report.json
+
+  # =======================================================================
+  # JOB 2: RSPEC TESTS (Code Coverage Generation by SimpleCov)
+  # =======================================================================
+  rspec-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby & Install Gems
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4.2
+          bundler-cache: true
+          working-directory: munchora/server
+
+      - name: Run tests with coverage
+        working-directory: munchora/server
+        env:
+          RAILS_ENV: test
+        run: bundle exec rspec
+
+      # ------------------------------------------
+      # PUBLISH CODE COVERAGE ARTIFACT
+      # ------------------------------------------
+      - name: Upload RSpec JSON Coverage Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rspec-json-coverage-report
+          path: munchora/server/coverage/coverage.json

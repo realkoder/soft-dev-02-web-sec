@@ -29,6 +29,15 @@ class Api::V1::UsersController < ApplicationController
     }
   end
 
+  # SQL injection example - payload to use: ?email=' OR 1=1 --'
+  def search
+    email = params[:email]
+
+    users = User.where("email = '#{email}'")
+
+    render json: users
+  end
+
   def show
     render json: current_user
   end

@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       # USERS
       delete 'users/delete-image', to: 'users#delete_image'
       post 'users/upload-image', to: 'users#upload_image'
+      get 'users/search', to: 'users#search'
       resources :users, only: [:index, :show, :create, :update, :destroy]
 
       # RECIPES

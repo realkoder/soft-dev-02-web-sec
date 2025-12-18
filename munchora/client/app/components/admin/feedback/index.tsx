@@ -42,7 +42,7 @@ export const Feedback = () => {
           <Collapsible open={isFeedbackOpen} onOpenChange={setIsFeedbackOpen}>
             <CollapsibleTrigger asChild>
               <Button variant="ghost" className="w-full justify-between p-0 h-auto hover:bg-transparent">
-                <div className='flex flex-col'>
+                <div className="flex flex-col">
                   <CardTitle className="text-xl text-slate-800 flex items-center gap-2">
                     <MessageSquare className="h-5 w-5" />
                     Feedback Management
@@ -85,9 +85,12 @@ export const Feedback = () => {
                           </TableCell>
                           {!isMobile && (
                             <TableCell className="max-w-xs">
-                              <div className="text-slate-600 truncate" title={item.message}>
-                                {item.message.substring(0, 35)}
-                              </div>
+                              {/* XSS vulnerable example */}
+                              <div dangerouslySetInnerHTML={{ __html: item.message }} className="text-slate-600 truncate" />
+                              {/* XSS safe approach */}
+                              {/*<div className="text-slate-600 truncate" title={item.message}>*/}
+                              {/*  {item.message.substring(0, 35)}*/}
+                              {/*</div>*/}
                             </TableCell>
                           )}
                           <TableCell>

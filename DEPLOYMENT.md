@@ -126,6 +126,34 @@ location /uploads/ {
 
 <br>
 
+## Configuring UFW (Uncomplicated Firewall)
+
+```bash
+# Set default rules to deny all incoming and allow all outgoing traffic
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# Allow essential services (SSH, HTTP, HTTPS)
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+
+# Limit connections
+sudo ufw limit ssh
+sudo ufw limit http
+sudo ufw limit https
+
+# Enable UFW
+sudo ufw enable
+
+# Check status
+sudo ufw status verbose
+```
+
+---
+
+<br>
+
 ## Fail2ban
 
 ```
